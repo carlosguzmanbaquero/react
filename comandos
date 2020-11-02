@@ -1,0 +1,18 @@
+//instalar react de forma global
+npm install -g create-react-app@version
+npm install -g create-react-app@1.5.2
+
+//eliminar react
+npm uninstall -g create-react-app
+
+//version de react
+create-react-app --version
+
+//crear aplicacion (actualmente se usa npx)
+create-react-app name_app
+npx create-react-app name_app
+
+//arrancar aplicacion
+npm start
+
+
