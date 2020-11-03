@@ -12,7 +12,18 @@ create-react-app --version
 create-react-app name_app
 npx create-react-app name_app
 
+npx create-react-app@1.5.2 confusion2
+
 //arrancar aplicacion
 npm start
+
+//instalar bootstrap
+npm install bootstrap@4.0.0 --save
+
+//instalar reactstrap
+npm install reactstrap@5.0.0 --save
+
+//instalar react-popper
+npm install react-popper@0.9.2 --save
 
 
