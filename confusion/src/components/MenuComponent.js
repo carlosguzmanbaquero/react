@@ -4,11 +4,19 @@ import { Media, Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } f
 
 class Menu extends Component{
 
+    //ciclo de vida
     constructor(props){
         super(props);
         this.state = {
             selectedDish:null,
         };
+
+        console.log('Menu constructor()');
+    }
+
+    //ciclo de vida
+    componentDidMount(){
+        console.log('Menu componentDidMount()');
     }
 
     onDishSelect(dish){
@@ -33,7 +41,9 @@ class Menu extends Component{
         }
     }
 
+    //ciclo de vida
     render(){
+        console.log('Menu render()');
         const menu = this.props.dishes.map((dish) =>{
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
