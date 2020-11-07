@@ -34,6 +34,7 @@ class Menu extends Component{
                         <CardText>{dish.description}</CardText>
                     </CardBody>
                 </Card>
+                
             );
         }else{
             return (
@@ -48,7 +49,7 @@ class Menu extends Component{
         const menu = this.props.dishes.map((dish) =>{
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
-                    <Card onClick={()=>{this.onDishSelect(dish); this.dishDetail.onDishSelect(dish);}}>
+                    <Card onClick={()=>{this.onDishSelect(dish); /*this.dishDetail.onDishSelect(dish);*/}}>
                         <CardImg width="100%" src={dish.image} alt={dish.name} />
                         <CardImgOverlay>
                             <CardTitle>{dish.name}</CardTitle>
@@ -57,13 +58,15 @@ class Menu extends Component{
                 </div>
             );
         });
-
+//<DishDetail ref={instance => { this.dishDetail = instance; }}></DishDetail>
         return (
             <div className="container">
                 <div className="row">
                     {menu}
                 </div>
-                <DishDetail ref={instance => { this.dishDetail = instance; }}></DishDetail>
+                
+                <DishDetail selectedDish={this.state.selectedDish}></DishDetail>
+                
             </div>
         );
     }

@@ -19,11 +19,11 @@ class DishDetail extends Component{
     componentDidMount(){
         console.log('DishDetail componentDidMount()');
     }
-
+/*
     onDishSelect(dish){
         this.setState({selectedDish: dish});
     }
-
+*/
     renderDish(dish){
         if(dish != null){
             return (
@@ -52,7 +52,7 @@ class DishDetail extends Component{
                     <div>
                         <CardBody>
                             <CardText>{comment.comment}</CardText>
-                            <CardText>--{comment.author}, {comment.date}</CardText>
+                            <CardText>--{comment.author}, {comment.date.substr(0,10)}</CardText>
                         </CardBody>
                     </div>
                 );
@@ -88,14 +88,14 @@ class DishDetail extends Component{
     //ciclo de vida
     render(){
         console.log('DishDetail render()');
-        if(this.state.selectedDish){
+        if(this.props.selectedDish){
             return (
                 <div>
                     <center><h1>Dish Selected</h1></center>
                     <div className="row list-unstyled">
                         
-                        {this.renderDish(this.state.selectedDish)}
-                        {this.renderComments(this.state.selectedDish)}
+                        {this.renderDish(this.props.selectedDish)}
+                        {this.renderComments(this.props.selectedDish)}
                     </div>
                 </div>
             );
