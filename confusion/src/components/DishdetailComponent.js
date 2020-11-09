@@ -1,30 +1,8 @@
-import React, { Component } from 'react';
-//import { Media } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import React from 'react';
+import { Card, CardImg, CardText, CardBody ,CardTitle } from 'reactstrap';
 
-class DishDetail extends Component{
 
-    //ciclo de vida
-    constructor(props){
-        super(props);
-        
-        this.state = {
-            selectedDish:null,
-        };
-
-        console.log('DishDetail constructor()');
-    }
-
-    //ciclo de vida
-    componentDidMount(){
-        console.log('DishDetail componentDidMount()');
-    }
-/*
-    onDishSelect(dish){
-        this.setState({selectedDish: dish});
-    }
-*/
-    renderDish(dish){
+    function RenderDish({dish}){
         if(dish != null){
             return (
                 <div className="col-12 col-md-5 m-1">
@@ -44,7 +22,7 @@ class DishDetail extends Component{
         }
     }
 
-    renderComments(dish){
+    function RenderComments({dish}){
         
         if(dish != null && dish.comments!=null){
             const comments = dish.comments.map((comment) =>{
@@ -57,18 +35,6 @@ class DishDetail extends Component{
                     </div>
                 );
             });
-
-            /*
-                return (
-                    <div className="col-12 col-md-5 m-1">
-                        <h4>Comments</h4>
-                        <ul className="list-unstyled">
-                            {Comments}
-                    
-                        </ul>
-                    </div>
-                );
-            */
 
             return (
                 <div className="col-12 col-md-5 m-1">
@@ -86,17 +52,16 @@ class DishDetail extends Component{
     }
 
     //ciclo de vida
-    render(){
+    const DishDetail =(props)=>{
         console.log('DishDetail render()');
-        if(this.props.selectedDish){
+        if(props.selectedDish){
             return (
                 <div>
                     <center><h1>Dish Selected</h1></center>
                     <div className="container">
                     <div className="row list-unstyled">
-                        
-                        {this.renderDish(this.props.selectedDish)}
-                        {this.renderComments(this.props.selectedDish)}
+                        <RenderDish dish={props.selectedDish}></RenderDish>
+                        <RenderComments dish={props.selectedDish}></RenderComments>
                     </div>
                     </div>
                 </div>
@@ -107,6 +72,6 @@ class DishDetail extends Component{
             );
         }
     }
-}
+
 
 export default DishDetail;
