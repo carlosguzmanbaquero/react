@@ -26,4 +26,12 @@ npm install reactstrap@5.0.0 --save
 //instalar react-popper
 npm install react-popper@0.9.2 --save
 
+//mas estilos css
+npm install font-awesome@4.7.0 --save
+npm install bootstrap-social@5.1.1 --save
+
+//react router
+npm install react-router-dom@ --save
+
+
 
