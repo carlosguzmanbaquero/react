@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody ,CardTitle } from 'reactstrap';
-
+import { Card, CardImg, CardText, CardBody ,CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
     function RenderDish({dish}){
         if(dish != null){
@@ -22,10 +22,10 @@ import { Card, CardImg, CardText, CardBody ,CardTitle } from 'reactstrap';
         }
     }
 
-    function RenderComments({dish}){
+    function RenderComments({comments}){
         
-        if(dish != null && dish.comments!=null){
-            const comments = dish.comments.map((comment) =>{
+        if(comments){
+            const commentsList = comments.map((comment) =>{
                 return (
                     <div key={comment.id}>
                         <CardBody>
@@ -40,7 +40,7 @@ import { Card, CardImg, CardText, CardBody ,CardTitle } from 'reactstrap';
                 <div className="col-12 col-md-5 m-1">
                     <Card>
                     <h4>Comments</h4>
-                    {comments}
+                    {commentsList}
                     </Card>
                 </div>
             );
@@ -57,12 +57,21 @@ import { Card, CardImg, CardText, CardBody ,CardTitle } from 'reactstrap';
         if(props.selectedDish){
             return (
                 <div>
-                    <center><h1>Dish Selected</h1></center>
                     <div className="container">
-                    <div className="row list-unstyled">
-                        <RenderDish dish={props.selectedDish}></RenderDish>
-                        <RenderComments dish={props.selectedDish}></RenderComments>
+                    <div className="row">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{props.selectedDish.name}</BreadcrumbItem>
+                        </Breadcrumb>
+                        <div className="col-12">
+                            <h3>{props.selectedDish.name}</h3>
+                            <hr></hr>
+                        </div>
                     </div>
+                        <div className="row list-unstyled">
+                            <RenderDish dish={props.selectedDish}></RenderDish>
+                            <RenderComments comments={props.comments}></RenderComments>
+                        </div>
                     </div>
                 </div>
             );
