@@ -33,5 +33,7 @@ npm install bootstrap-social@5.1.1 --save
 //react router
 npm install react-router-dom@ --save
 
-
+//instalar redux
+npm install redux@3.7.2
+npm install react-redux@5.0.7
 
