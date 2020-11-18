@@ -10,7 +10,7 @@ function About(props) {
             <RenderLeader leader={leader}></RenderLeader>
         );
     });
-
+/*
     function RenderLeader2({leader}){
         return (
             
@@ -29,7 +29,7 @@ function About(props) {
         
         );
     }
-
+*/
     function RenderLeader({leader}){
         return (
             
