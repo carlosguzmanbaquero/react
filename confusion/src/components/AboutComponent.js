@@ -1,15 +1,47 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardTitle, CardText, CardHeader, CardImg, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import { Loading } from './LoadingComponent';
 
 function About(props) {
 
-    const leaders = props.leaders.map((leader) => {
-        return (
+    function RenderLeaders({isLoading, errMess}){
+        if (isLoading) {
+            return(
+                <Loading />
+            );
+        }
+        else if (errMess) {
+            return(
+                    <h4>{errMess}</h4>
+            );
+        }
+        else if(props.leaders!=null) {
+            return (
             
-            <RenderLeader leader={leader}></RenderLeader>
-        );
-    });
+                <Media list>
+                    <Stagger in>
+                        {
+                            props.leaders.map((leader) => {
+                                return (
+                                    <Fade in>
+                                        <RenderLeader leader={leader}></RenderLeader>
+                                    </Fade>
+                                );
+                            })
+                        }
+                    </Stagger>
+                </Media>
+            
+            );
+        }else{
+            return (
+                <div></div>
+            );
+        }
+    }
 /*
     function RenderLeader2({leader}){
         return (
@@ -31,18 +63,19 @@ function About(props) {
     }
 */
     function RenderLeader({leader}){
+        
         return (
             
             <div className="row row-content">
                 <div className="col-12 col-md-5">
-                    <CardImg width="100%" src={leader.image} alt={leader.name} />
+                    <CardImg width="100%" src={baseUrl+leader.image} alt={leader.name} />
                 </div>
                 <div className="col-12 col-md-6">                
-                  <CardBody>
+                <CardBody>
                     <CardTitle>{leader.name}</CardTitle>
                     <CardText>{leader.designation}</CardText>
                     <CardText>{leader.description}</CardText>
-                  </CardBody>
+                </CardBody>
                 </div>
             </div>
         
@@ -105,9 +138,9 @@ function About(props) {
                 </div>
                 <div className="container">
                 <div className="row">
-                    <Media list>
-                        {leaders}
-                    </Media>
+                       
+                    <RenderLeaders isLoading={props.leadersLoading} errMess={props.leadersErrMess}/>
+                       
                 </div></div>
             </div>
         </div>
