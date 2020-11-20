@@ -52,3 +52,6 @@ npm install react-transition-group@2.3.0
 npm install react-animation-components@3.0.0
 npm install prop-types@15.6.0
 
+//generar carpeta de despliegue
+npm run build
+
