@@ -41,3 +41,9 @@ npm install react-redux-form@1.16.8
 npm install redux-thunk@2.2.0
 npm install redux-logger@3.0.6
 
+//instalar json server
+npm install json-server -g
+
+//instalar cross fetch
+npm install cross-fetch@2.1.0
+
