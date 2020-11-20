@@ -30,7 +30,7 @@ import { baseUrl } from '../shared/baseUrl';
         handleSubmit(values) {
             console.log('Current State is: ' + JSON.stringify(values));
             //alert('Current State is: ' + JSON.stringify(values));
-            this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
+            this.props.postComment(this.props.dishId, values.rating, values.name, values.comment);
             this.toggleModal();
             
         }
@@ -127,7 +127,7 @@ import { baseUrl } from '../shared/baseUrl';
         }
     }
 
-    function RenderComments({comments, addComment, dishId}){
+    function RenderComments({comments, postComment, dishId}){
         
         if(comments){
             const commentsList = comments.map((comment) =>{
@@ -146,7 +146,7 @@ import { baseUrl } from '../shared/baseUrl';
                     <Card>
                         <h4>Comments</h4>
                         {commentsList}
-                        <CommentForm dishId={dishId} addComment={addComment} />
+                        <CommentForm dishId={dishId} postComment={postComment} />
                     </Card>
                 </div>
             );
@@ -195,7 +195,7 @@ import { baseUrl } from '../shared/baseUrl';
                         <div className="row list-unstyled">
                             <RenderDish dish={props.selectedDish}></RenderDish>
                             <RenderComments comments={props.comments} 
-                                addComment={props.addComment}
+                                postComment={props.postComment}
                                 dishId={props.selectedDish.id}></RenderComments>
                         </div>
                     </div>
